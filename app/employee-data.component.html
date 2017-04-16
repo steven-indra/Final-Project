@@ -1,0 +1,10 @@
+<div *ngIf="!show">
+    Select Employee First
+</div>
+<div *ngIf="show">
+    <h2>{{ employee.firstName }}</h2>
+    <div>{{ employee.lastName }}</div>
+    <div>{{ employee.gender }}</div>
+    <div>{{ employee.dob | date: 'shortDate' }}</div>
+    <div>{{ employee.hiredDate | date: 'shortDate' }}</div>
+</div>

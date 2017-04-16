@@ -1,0 +1,6 @@
+<section>
+  <input type="text" (keyup)="onChange($event)">
+  <ea-employee
+    *ngFor="let eachEmployee of employees"
+    [employee]="eachEmployee"></ea-employee>
+</section>
