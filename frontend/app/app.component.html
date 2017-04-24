@@ -1,0 +1,15 @@
+<section>
+  <header>
+    <h1>My Market Stock</h1>
+    <p class="description">Keeping track of my market's fruits and vegetables stock</p>
+  </header>
+
+  <div id = "left">
+    <ea-employee-list></ea-employee-list>
+    <a md-fab routerLink="/employees/add" (click)="add()"><i class="material-icons">add</i></a>
+  </div>
+  <div id = "right">
+    <router-outlet></router-outlet>
+  </div>
+  
+</section>

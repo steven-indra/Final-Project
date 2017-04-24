@@ -5,3 +5,8 @@ app/**/*.js.map
 npm-debug.log*
 .DS_store
 .idea
+frontend/node_modules
+frontend/typings
+frontend/app/**/*.js
+frontend/app/**/*.js.map
+frontend/npm-debug.log*

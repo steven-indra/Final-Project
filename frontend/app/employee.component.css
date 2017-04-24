@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 2px solid;
+  color: #bdc2c5;
+}
+.selected{
+  background-color: grey;
+}
+.notSelected{
+  background-color: #29394b;
+}
+.example-header-image {
+  background-size: cover;
+}

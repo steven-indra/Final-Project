@@ -1,0 +1,73 @@
+<div *ngIf="!show">
+  Select Employee First
+</div>
+<div *ngIf="show">
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <ul>
+      <li>
+        <label for="firstName">firstName</label>
+        <input type="text" name="firstName" id="firstName" formControlName="firstName">
+      </li>
+      <li>
+        <label for="lastName">lastName</label>
+        <input type="text" name="lastName" id="lastName" formControlName="lastName" >
+      </li>
+      <li>
+        <label for="gender">gender</label>
+        <input type="text" name="gender" id="gender" formControlName="gender" >
+      </li>
+      <li>
+        <label for="dob">dob</label>
+        <input type="date" name="dob" id="dob" formControlName="dob" >
+      </li>
+      <li>
+        <label for="nationality">nationality</label>
+        <input type="text" name="nationality" id="nationality" formControlName="nationality" >
+      </li>
+      <li>
+        <label for="maritalStatus">maritalStatus</label>
+        <input type="text" name="maritalStatus" id="maritalStatus" formControlName="maritalStatus" >
+      </li>
+      <li>
+        <label for="phone">phone</label>
+        <input type="text" name="phone" id="phone" formControlName="phone" >
+      </li>
+      <li>
+        <label for="subDivision">subDivision</label>
+        <input type="text" name="subDivision" id="subDivision" formControlName="subDivision" >
+      </li>
+      <li>
+        <label for="status">status</label>
+        <input type="text" name="status" id="status" formControlName="status">
+      </li>
+      <li>
+        <label for="suspendDate">suspendDate</label>
+        <input type="date" name="suspendDate" id="suspendDate" formControlName="suspendDate" >
+      </li>
+      <li>
+        <label for="hiredDate">hiredDate</label>
+        <input type="date" name="hiredDate" id="hiredDate" formControlName="hiredDate" >
+      </li>
+      <li>
+        <label for="grade">grade</label>
+        <input type="text" name="grade" id="grade" formControlName="grade" >
+      </li>
+      <li>
+        <label for="division">division</label>
+        <input type="text" name="division" id="division" formControlName="division" >
+      </li>
+      <li>
+        <label for="email">email</label>
+        <input type="text" name="email" id="email" formControlName="email" >
+      </li>
+      <li>
+        <label for="location">location</label>
+        <input type="text" name="location" id="location" formControlName="location" >
+      </li>
+    </ul>
+    <button type="submit" [disabled]="!form.valid">Save</button>
+    <button type="button" (click)="onCancel()">cancel</button>
+  </form>
+  <img md-card-avatar [src]="employeeImage | safeUrl" (click)="fileInput.click()" />
+  <input #fileInput type="file" hidden="hidden" (change)="onChange($event)" />
+</div>

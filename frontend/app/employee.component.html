@@ -1,0 +1,7 @@
+<md-card class="employee-card" [ngClass]="{'selected':isSelected(),'notSelected':!isSelected()}">
+  <md-card-header>
+    <img md-card-avatar [src]="image() | safeUrl" />
+    <md-card-title>{{ employee.firstName }} {{ employee.lastName }}</md-card-title>
+    <md-card-subtitle>{{ employee.dob | date: 'shortDate' }}</md-card-subtitle>
+  </md-card-header>
+</md-card>

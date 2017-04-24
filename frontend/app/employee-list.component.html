@@ -1,0 +1,18 @@
+<section>
+  <input type="text" (keyup)="onChange($event)">
+  <i class="material-icons" (click)="onDelete()" *ngIf="edited">delete</i>
+  <i class="material-icons" (click)="onFilter()">filter_list</i>
+  <i class="material-icons" (click)="onSort()">sort</i>
+  <div>{{ employees == null? 0:employees.length }}</div>
+  <div *ngIf="!show">
+     <ea-employee
+      *ngFor="let eachEmployee of employees"
+      [employee]="eachEmployee"
+      (click)=onClick(eachEmployee)
+      [selectedEmployee]="selectedEmployee"></ea-employee>
+  </div>
+  
+  <div *ngIf="show">
+    We couldn't find what you're looking for
+  </div>
+</section>
