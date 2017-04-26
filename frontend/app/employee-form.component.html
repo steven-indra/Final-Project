@@ -10,59 +10,83 @@
       </li>
       <li>
         <label for="lastName">lastName</label>
-        <input type="text" name="lastName" id="lastName" formControlName="lastName" >
+        <input type="text" name="lastName" id="lastName" formControlName="lastName">
       </li>
       <li>
         <label for="gender">gender</label>
-        <input type="text" name="gender" id="gender" formControlName="gender" >
+        <md-select placeholder="Gender" name="gender" id="gender" formControlName="gender">
+          <md-option *ngFor="let gender of lookupLists.genders" [value]="gender.value">
+            {{gender.viewValue}}
+          </md-option>
+        </md-select>
       </li>
       <li>
         <label for="dob">dob</label>
-        <input type="date" name="dob" id="dob" formControlName="dob" >
+        <input type="date" name="dob" id="dob" formControlName="dob">
       </li>
       <li>
         <label for="nationality">nationality</label>
-        <input type="text" name="nationality" id="nationality" formControlName="nationality" >
+        <input type="text" name="nationality" id="nationality" formControlName="nationality">
       </li>
       <li>
         <label for="maritalStatus">maritalStatus</label>
-        <input type="text" name="maritalStatus" id="maritalStatus" formControlName="maritalStatus" >
+        <md-select placeholder="Marital Status" name="maritalStatus" id="maritalStatus" formControlName="maritalStatus">
+          <md-option *ngFor="let maritalStatus of lookupLists.maritalsStatus" [value]="maritalStatus.value">
+            {{maritalStatus.viewValue}}
+          </md-option>
+        </md-select>
       </li>
       <li>
         <label for="phone">phone</label>
-        <input type="text" name="phone" id="phone" formControlName="phone" >
+        <input type="text" name="phone" id="phone" formControlName="phone">
       </li>
       <li>
         <label for="subDivision">subDivision</label>
-        <input type="text" name="subDivision" id="subDivision" formControlName="subDivision" >
+        <input type="text" name="subDivision" id="subDivision" formControlName="subDivision">
       </li>
       <li>
         <label for="status">status</label>
-        <input type="text" name="status" id="status" formControlName="status">
+        <md-select placeholder="Status" name="status" id="status" formControlName="status">
+          <md-option *ngFor="let status of lookupLists.status" [value]="status.value">
+            {{status.viewValue}}
+          </md-option>
+        </md-select>
       </li>
       <li>
         <label for="suspendDate">suspendDate</label>
-        <input type="date" name="suspendDate" id="suspendDate" formControlName="suspendDate" >
+        <input type="date" name="suspendDate" id="suspendDate" formControlName="suspendDate">
       </li>
       <li>
         <label for="hiredDate">hiredDate</label>
-        <input type="date" name="hiredDate" id="hiredDate" formControlName="hiredDate" >
+        <input type="date" name="hiredDate" id="hiredDate" formControlName="hiredDate">
       </li>
       <li>
         <label for="grade">grade</label>
-        <input type="text" name="grade" id="grade" formControlName="grade" >
+        <md-select placeholder="Grades" name="grade" id="grade" formControlName="grade">
+          <md-option *ngFor="let grade of lookupLists.grades" [value]="grade.value">
+            {{grade.viewValue}}
+          </md-option>
+        </md-select>
       </li>
       <li>
         <label for="division">division</label>
-        <input type="text" name="division" id="division" formControlName="division" >
+        <md-select placeholder="Division" name="division" id="division" formControlName="division">
+          <md-option *ngFor="let division of lookupLists.divisions" [value]="division.value">
+            {{division.viewValue}}
+          </md-option>
+        </md-select>
       </li>
       <li>
         <label for="email">email</label>
-        <input type="text" name="email" id="email" formControlName="email" >
+        <input type="text" name="email" id="email" formControlName="email">
       </li>
       <li>
         <label for="location">location</label>
-        <input type="text" name="location" id="location" formControlName="location" >
+        <md-select placeholder="Location" formControlName="location">
+          <md-option *ngFor="let location of locations" [value]="location.locationCity">
+            {{location.locationCity}}
+          </md-option>
+        </md-select>
       </li>
     </ul>
     <button type="submit" [disabled]="!form.valid">Save</button>

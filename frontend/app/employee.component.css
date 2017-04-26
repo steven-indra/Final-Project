@@ -2,14 +2,77 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  border: 2px solid;
+  border-bottom: 1px solid;
   color: #bdc2c5;
+  box-sizing: border-box;
+}
+.overlay{
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  opacity: 0;
+}
+.employee-card{
+  padding: 5px;
+  height:70px;
+  width: 100%;
+  box-sizing: border-box;
+}
+#image-avatar{
+  height: 100%;
+  width: 60px;
+}
+/deep/ .mat-card-header-text{
+  padding-top:3px;
+}
+.right{
+  position: absolute;
+  float: right;
+  right: 0px;
+  height: 70px;
+  padding: 5px;
+  box-sizing: border-box;
+  text-align: right;
+  color:dimgray;
+}
+.right-top{
+  padding-top:3px;
+  padding-right: 5px;
+  font-size: 10pt;
+}
+.right-bottom{
+  padding-top:5px;
+  color: #6f74dd;
+}
+.mat-card-title{
+  font-weight: bold;
+  color: black;
+  margin-bottom: 5px;
+}
+.mat-card-actions, .mat-card-content, .mat-card-subtitle{
+  margin-bottom: 5px;
+  color:dimgray;
+}
+.mat-card-header .mat-card-subtitle:not(:first-child){
+  margin-top: -3px;
+}
+md-card-header{
+  box-sizing: border-box;
+  height: 100%;
+}
+.card-header{
+  margin:0px;
+  width: 100%;
+  height: 30%;
+  box-sizing: border-box;
 }
 .selected{
-  background-color: grey;
+  background-color: #BABEDA;
+  border-bottom: 1px solid red;
+  opacity: 0.6;
 }
 .notSelected{
-  background-color: #29394b;
+  background-color: white;
 }
 .example-header-image {
   background-size: cover;

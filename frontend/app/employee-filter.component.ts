@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { lookupListToken } from './providers';
+import { LocationService } from './location.service';
 
 @Component({
     selector: 'employee-filter-dialog',
@@ -14,12 +15,17 @@ export class EmployeeFilterDialog {
     location = "";
     tempLocation = "";
     constructor(public dialogRef: MdDialogRef<EmployeeFilterDialog>,
+        private locationService: LocationService,
         @Inject(lookupListToken) public lookupLists) { }
-    locations = [
-        { value: 'Bali', viewValue: 'Bali' },
-        { value: 'Bandung', viewValue: 'Bandung' },
-        { value: 'Jakarta', viewValue: 'Jakarta' }
-    ];
+    locations;
+
+    ngOnInit() {
+        this.locationService.getAll()
+            .subscribe(locations => {
+                this.locations = locations;
+            });
+    }
+
     onGenderCbClick() {
         if (this.genderDisabled == true) {
             this.gender = "";

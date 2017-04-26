@@ -4,24 +4,25 @@
   min-height: 100%;
   box-sizing: border-box;
 }
+.example-icon {
+  padding: 0 12px;
+}
+.title{
+  color: white;
+  font-size: 10pt;
+  padding: 0 12px;
+}
 a{
-  position: relative;
+  position: absolute;
   top: 50%;
   float: right;
+  right: 25px;
+}
+.example-spacer {
+  flex: 1 1 auto;
 }
 section {
   width: 100%;
-  background-color: #32435b;
-}
-section > header {
-  color: #ffffff;
-  padding: 10px;
-}
-section > header > h1 {
-  font-size: 2em;
-}
-section > header .description {
-  font-style: italic;
 }
 section > #left{
   width: 30%;
@@ -29,6 +30,12 @@ section > #left{
 section > #right {
   width: 70%;
 }
+#left{
+  position: relative;
+  border-right: 1px solid gray;
+  box-sizing: border-box;
+}
 #left, #right {
   float:left;
+  box-sizing: border-box;
 }

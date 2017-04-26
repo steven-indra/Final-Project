@@ -1,15 +1,25 @@
 <section>
   <header>
-    <h1>My Market Stock</h1>
-    <p class="description">Keeping track of my market's fruits and vegetables stock</p>
+    <md-toolbar color="primary">
+      <md-icon class="example-icon">menu</md-icon>
+      <img md-card-avatar src="default-user-image.png" />
+      <div class="title">
+        <div>Steven Indra Adinata</div>
+        <div>SE - JP</div>
+      </div>
+
+      <span class="example-spacer"></span>
+      <md-icon class="example-icon">settings</md-icon>
+      <md-icon class="example-icon">power_settings_new</md-icon>
+    </md-toolbar>
   </header>
 
-  <div id = "left">
+  <div id="left">
     <ea-employee-list></ea-employee-list>
     <a md-fab routerLink="/employees/add" (click)="add()"><i class="material-icons">add</i></a>
   </div>
-  <div id = "right">
+  <div id="right">
     <router-outlet></router-outlet>
   </div>
-  
+
 </section>

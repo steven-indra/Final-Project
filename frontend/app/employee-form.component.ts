@@ -3,9 +3,11 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { EmployeeService } from './employee.service';
+import { LocationService } from './location.service';
 import { RefreshService } from './refresh.service';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { lookupListToken } from './providers';
 
 @Component({
   selector: 'ea-employee-form',
@@ -20,15 +22,20 @@ export class EmployeeFormComponent {
   edited = false;
   employeeId;
 
+  locations;
+
   constructor(
     private formBuilder: FormBuilder,
     private employeeService: EmployeeService,
     private refreshService: RefreshService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private datepipe: DatePipe) { }
+    private datepipe: DatePipe,
+    private locationService: LocationService,
+    @Inject(lookupListToken) public lookupLists) { }
 
   ngOnInit() {
+    this.getLocations();
 
     this.form = this.formBuilder.group({
       firstName: this.formBuilder.control(''),
@@ -65,6 +72,14 @@ export class EmployeeFormComponent {
       });
 
 
+  }
+
+  getLocations()
+  {
+    this.locationService.getAll()
+      .subscribe(locations => {
+        this.locations = locations;
+      });
   }
 
   onCancel() {

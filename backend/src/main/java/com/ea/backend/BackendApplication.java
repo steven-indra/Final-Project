@@ -70,31 +70,31 @@ public class BackendApplication {
 		/*firstName, lastName, gender, dob, nationality, maritalStatus, phone, 
 		 *subDivision, status, suspendDate, hiredDate, grade, division, email, location*/
 		dummyEmployee.add(new Employee("Peter","Parker","Male",new Date(),"Indonesian","Single", "+12839124781"
-					,"Java Bootcamp", "Contract", new Date(), new Date(), "SE-PG", "CDC-AsteRx","Peter.Parker@gmail.com", dummyLocation.get(0)));
+					,"Java Bootcamp", "Contract", new Date(), new Date(), "SE - PG", "CDC AsteRx","Peter.Parker@gmail.com", dummyLocation.get(0)));
 		dummyEmployee.add(new Employee("Harry","Potter","Male",new Date(),"Indonesian","Married", "+1283911211"
-				,"Sub Division1", "Full Time", null, new Date(), "SE-JP", "Division1","Harry.Potter@gmail.com", dummyLocation.get(1)));
+				,"Sub Division1", "Full Time", null, new Date(), "SE - JP", "SWD Red","Harry.Potter@gmail.com", dummyLocation.get(1)));
 		dummyEmployee.add(new Employee("John","Travis","Male",new Date(),"Australian","Single", "+12839124781"
-				,"Java Bootcamp", "Contract", null, new Date(), "SE-AN", "Division2","John.Travis@gmail.com", dummyLocation.get(2)));
+				,"Java Bootcamp", "Contract", null, new Date(), "SE - AN", "SWD Red","John.Travis@gmail.com", dummyLocation.get(2)));
 		dummyEmployee.add(new Employee("Jack","Ripper","Male",new Date(),"Indonesian","Single", "+12839124781"
-				,"Java Bootcamp", "Contract", null, new Date(), "SE-PG", "Division3","Jack.Ripper@gmail.com", dummyLocation.get(3)));
+				,"Java Bootcamp", "Contract", null, new Date(), "SE - PG", "SWD Green","Jack.Ripper@gmail.com", dummyLocation.get(3)));
 		dummyEmployee.add(new Employee("Johny","Andrean","Male",new Date(),"Indonesian","Single", "+12839124781"
-				,"Java Bootcamp", "Contract", null, new Date(), "SE-PG", "CDC-AsteRx","Johny.Andrean@gmail.com", dummyLocation.get(4)));
+				,"Java Bootcamp", "Contract", null, new Date(), "SE - PG", "CDC AsteRx","Johny.Andrean@gmail.com", dummyLocation.get(4)));
 		dummyEmployee.add(new Employee("Jackie","Chan","Male",new Date(),"Indonesian","Single", "+12839124781"
-				,"Java Bootcamp", "Contract", null, new Date(), "SE-PG", "CDC-AsteRx","Jackie.Chan@gmail.com", dummyLocation.get(5)));
+				,"Java Bootcamp", "Contract", null, new Date(), "SE - PG", "CDC AsteRx","Jackie.Chan@gmail.com", dummyLocation.get(5)));
 		dummyEmployee.add(new Employee("Dora","Explorer","Female",new Date(),"Indonesian","Single", "+12839124781"
-				,"Sub Division2", "Contract", null, new Date(), "SE-PG", "CDC-AsteRx","Dora.Explorer@gmail.com", dummyLocation.get(0)));
+				,"Sub Division2", "Contract", null, new Date(), "SE - PG", "CDC AsteRx","Dora.Explorer@gmail.com", dummyLocation.get(0)));
 		dummyEmployee.add(new Employee("Minnie","Mouse","Female",new Date(),"Indonesian","Married", "+12839124781"
-				,"Java Bootcamp", "Contract", null, new Date(), "SE-PG", "CDC-AsteRx","Minnie.Mouse@gmail.com", dummyLocation.get(1)));
+				,"Java Bootcamp", "Contract", null, new Date(), "SE - PG", "CDC AsteRx","Minnie.Mouse@gmail.com", dummyLocation.get(1)));
 		dummyEmployee.add(new Employee("Mickey","Mouse","Male",new Date(),"Indonesian","Married", "+12839124781"
-				,"Java Bootcamp", "Contract", null, new Date(), "SE-PG", "CDC-AsteRx","Mickey.Mouse@gmail.com", dummyLocation.get(2)));
+				,"Java Bootcamp", "Contract", null, new Date(), "SE - PG", "CDC AsteRx","Mickey.Mouse@gmail.com", dummyLocation.get(2)));
 		dummyEmployee.add(new Employee("Daisy","Duck","Female",new Date(),"Indonesian","Married", "+12839124781"
-				,"Java Bootcamp", "Full Time", null, new Date(), "SE-PG", "CDC-AsteRx","Daisy.Duck@gmail.com", dummyLocation.get(3)));
+				,"Java Bootcamp", "Full Time", null, new Date(), "SE - PG", "CDC AsteRx","Daisy.Duck@gmail.com", dummyLocation.get(3)));
 		dummyEmployee.add(new Employee("Donald","Duck","Male",new Date(),"Indonesian","Married", "+12839124781"
-				,"Java Bootcamp", "Contract", null, new Date(), "SE-PG", "CDC-AsteRx","Donald.Duck@gmail.com", dummyLocation.get(4)));
+				,"Java Bootcamp", "Contract", null, new Date(), "SE - PG", "CDC AsteRx","Donald.Duck@gmail.com", dummyLocation.get(4)));
 		dummyEmployee.add(new Employee("Patrick","Star","Male",new Date(),"Indonesian","Single", "+12839124781"
-				,"Java Bootcamp", "Contract", null, new Date(), "SE-PG", "CDC-AsteRx","Patrick.Star@gmail.com", dummyLocation.get(5)));
+				,"Java Bootcamp", "Contract", null, new Date(), "SE - PG", "CDC AsteRx","Patrick.Star@gmail.com", dummyLocation.get(5)));
 		dummyEmployee.add(new Employee("Johnie","Star","Male",new Date(),"Indonesian","Single", "+12839124781"
-				,"Java Bootcamp", "Full Time", null, new Date(), "SE-PG", "CDC-AsteRx","Johnie.Star@gmail.com", dummyLocation.get(0)));
+				,"Java Bootcamp", "Full Time", null, new Date(), "SE - PG", "CDC AsteRx","Johnie.Star@gmail.com", dummyLocation.get(0)));
 		employeeRepository.save(dummyEmployee);
 	}
 }

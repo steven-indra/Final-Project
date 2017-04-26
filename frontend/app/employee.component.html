@@ -1,7 +1,19 @@
-<md-card class="employee-card" [ngClass]="{'selected':isSelected(),'notSelected':!isSelected()}">
+<md-card class="employee-card" >
   <md-card-header>
-    <img md-card-avatar [src]="image() | safeUrl" />
+    <img id="image-avatar" md-card-avatar [src]="image() | safeUrl" />
     <md-card-title>{{ employee.firstName }} {{ employee.lastName }}</md-card-title>
-    <md-card-subtitle>{{ employee.dob | date: 'shortDate' }}</md-card-subtitle>
+    <md-card-subtitle>{{ employee.grade }}, {{ employee.division }}</md-card-subtitle>
+    <md-card-subtitle>{{ employee.location.locationCity }}, {{ employee.phone }}</md-card-subtitle>
   </md-card-header>
 </md-card>
+<div class="right">
+  <div class="right-top">
+    {{ employee.hiredDate | date: 'dd MMM yyyy' }}
+  </div>
+  <div class="right-bottom">
+     <md-icon>radio_button_checked</md-icon>
+     <md-icon>chevron_right</md-icon>
+  </div>
+</div>
+<div class="overlay" [ngClass]="{'selected':isSelected(),'notSelected':!isSelected()}">
+</div>
