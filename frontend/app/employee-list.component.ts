@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { EmployeeService } from './employee.service';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { EmployeeFilterDialog } from './employee-filter.component';
+import { EmployeeMessageDialog } from './employee-messagebox.component';
 
 import { RefreshService } from './refresh.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -35,13 +36,16 @@ export class EmployeeListComponent {
       .subscribe(employees => this.employees = employees);
     this.subscription = this.refreshService.notifyObservable$.subscribe((res) => {
       if (res.hasOwnProperty('option') && res.option === 'refresh') {
+        this.selectedEmployee = null;
+        this.edited = false;
         this.getEmployees(this.query, this.genderFilter, this.locationFilter, this.sort);
       } else if (res.hasOwnProperty('option') && res.option === 'refreshSelected') {
         this.selectedEmployee = null;
         this.edited = false;
-      }else if (res.hasOwnProperty('option') && res.option === 'refreshCancel') {
-        this.selectedEmployee = null;
-        this.edited = false;
+      } else if (res.hasOwnProperty('option') && res.option === 'selectedEmployee')
+      {
+        this.selectedEmployee = res.value;
+        this.edited = true;
       }
     });
   }
@@ -67,19 +71,28 @@ export class EmployeeListComponent {
   }
 
   onDelete() {
-    this.employeeService.delete(this.selectedEmployee)
-      .subscribe(empId => {
-        this.selectedEmployee = null;
-        this.edited = false;
-        this.router.navigate(['/employees/']);
-        this.getEmployees(this.query, this.genderFilter, this.locationFilter, this.sort);
-      });
+    let dialogRef = this.dialog.open(EmployeeMessageDialog, {
+      height: '180px',
+      width: '300px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == "yes") {
+        this.employeeService.delete(this.selectedEmployee)
+          .subscribe(empId => {
+            this.selectedEmployee = null;
+            this.edited = false;
+            this.router.navigate(['/employees/']);
+            this.getEmployees(this.query, this.genderFilter, this.locationFilter, this.sort);
+          });
+      }
+    });
+
   }
 
   onFilter() {
     let dialogRef = this.dialog.open(EmployeeFilterDialog, {
-      height: '400px',
-      width: '600px',
+      height: '245px',
+      width: '280px',
     });
     if (this.genderFilter != "") {
       dialogRef.componentInstance.gender = this.genderFilter;
@@ -112,7 +125,7 @@ export class EmployeeListComponent {
     this.employeeService.get(query, genderFilter, locationFilter, sort)
       .subscribe(employees => {
         this.employees = employees;
-        console.log(this.selectedEmployee);
+        //console.log(this.selectedEmployee);
         if (this.employees.length == 0) {
           this.show = true;
         } else {

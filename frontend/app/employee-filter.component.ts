@@ -6,6 +6,8 @@ import { LocationService } from './location.service';
 @Component({
     selector: 'employee-filter-dialog',
     templateUrl: 'app/employee-filter.component.html',
+    styleUrls: ['app/employee-filter.component.css']
+
 })
 export class EmployeeFilterDialog {
     genderDisabled = false; //false => disabled; true => enabled

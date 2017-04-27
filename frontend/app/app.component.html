@@ -19,6 +19,40 @@
     <a md-fab routerLink="/employees/add" (click)="add()"><i class="material-icons">add</i></a>
   </div>
   <div id="right">
+    <header id="right-header">
+      <md-tab-group>
+        <md-tab>
+          <ng-template md-tab-label>
+            <md-icon class="tab-icon">person</md-icon>
+          </ng-template>
+        </md-tab>
+        <md-tab>
+          <ng-template md-tab-label>
+            <md-icon class="tab-icon">restore</md-icon>
+          </ng-template>
+        </md-tab>
+        <md-tab>
+          <ng-template md-tab-label>
+            <md-icon class="tab-icon">layers</md-icon>
+          </ng-template>
+        </md-tab>
+        <md-tab>
+          <ng-template md-tab-label>
+            <md-icon class="tab-icon">wc</md-icon>
+          </ng-template>
+        </md-tab>
+        <md-tab>
+          <ng-template md-tab-label>
+            <md-icon class="tab-icon">home</md-icon>
+          </ng-template>
+        </md-tab>
+        <md-tab>
+          <ng-template md-tab-label>
+            <md-icon class="tab-icon">location_on</md-icon>
+          </ng-template>
+        </md-tab>
+      </md-tab-group>
+    </header>
     <router-outlet></router-outlet>
   </div>
 

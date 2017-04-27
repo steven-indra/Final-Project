@@ -4,16 +4,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, XHRBackend } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdCardModule,MdDialogModule, MdSelectModule, MdToolbarModule, MdIconModule, MdChipsModule, MdInputModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdCardModule,MdDialogModule, MdSelectModule, MdToolbarModule, MdIconModule, MdChipsModule, MdInputModule, MdTabsModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee.component';
 import { EmployeeListComponent } from './employee-list.component';
 import { EmployeeFilterDialog } from './employee-filter.component';
-// import { StockDirective } from './stock.directive';
+import { EmployeeMessageDialog } from './employee-messagebox.component';
 import { SafeUrl } from './safe-url.pipe';
 import { EmployeeFormComponent } from './employee-form.component';
-// import { ReportItemComponent } from './report-item.component';
 import { EmployeeService } from './employee.service';
 import { LocationService } from './location.service';
 import { lookupListToken, lookupLists } from './providers';
@@ -38,6 +37,7 @@ import { DatePipe } from '@angular/common';
     MdIconModule,
     MdChipsModule,
     MdInputModule,
+    MdTabsModule,
     routing
   ],
   declarations: [
@@ -46,13 +46,12 @@ import { DatePipe } from '@angular/common';
     EmployeeListComponent,
     EmployeeFilterDialog,
     SafeUrl,
-    // StockDirective,
-    // NameListPipe,
+    EmployeeMessageDialog,
     EmployeeFormComponent
-    // ReportItemComponent
   ],
   entryComponents: [
-    EmployeeFilterDialog
+    EmployeeFilterDialog,
+    EmployeeMessageDialog
   ],
   providers: [
     EmployeeService,
@@ -60,7 +59,6 @@ import { DatePipe } from '@angular/common';
     LocationService,
     { provide: lookupListToken, useValue: lookupLists },
     DatePipe
-    //{ provide: XHRBackend, useClass: MockXHRBackend }
   ],
   bootstrap: [
     AppComponent

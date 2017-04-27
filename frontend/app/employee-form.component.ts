@@ -11,7 +11,8 @@ import { lookupListToken } from './providers';
 
 @Component({
   selector: 'ea-employee-form',
-  templateUrl: 'app/employee-form.component.html'
+  templateUrl: 'app/employee-form.component.html',
+  styleUrls: ['app/employee-form.component.css']
 })
 export class EmployeeFormComponent {
   form;
@@ -74,8 +75,7 @@ export class EmployeeFormComponent {
 
   }
 
-  getLocations()
-  {
+  getLocations() {
     this.locationService.getAll()
       .subscribe(locations => {
         this.locations = locations;
@@ -83,7 +83,7 @@ export class EmployeeFormComponent {
   }
 
   onCancel() {
-    this.refreshService.notifyOther({ option: 'refreshCancel', value: 'cancel' });
+    this.refreshService.notifyOther({ option: 'refreshSelected', value: 'cancel' });
     this.router.navigate(['/employees/']);
   }
 
@@ -133,29 +133,32 @@ export class EmployeeFormComponent {
           this.show = true;
           this.edited = true;
           this.onValue();
+          this.refreshService.notifyOther({ option: 'selectedEmployee', value: this.employee });
         }
       });
   }
 
   onChange(event) {
-    this.file = event.srcElement.files;
+    this.file = event.srcElement.files[0];
 
-    console.log(this.file[0]);
+    //console.log(this.file[0]);
     var reader = new FileReader();
 
     reader.onload = (event: any) => {
       this.employeeImage = event.target.result;
     }
     reader.readAsDataURL(event.target.files[0]);
-    console.log(this.employeeImage);
+    //console.log(this.employeeImage);
     //this.employeeImage = this.file[0].name;
   }
 
   onSubmit(employee) {
-    console.log(employee);
+    //console.log(employee);
+    console.log(this.file);
     this.employeeService.addOrUpdate(employee, this.file, this.employeeId)
       .subscribe((response) => {
-        console.log(response);
+        //console.log(response);
+        this.file =undefined;
         this.refreshService.notifyOther({ option: 'refresh', value: 'from form' });
         this.router.navigate(['/employees/']);
       });

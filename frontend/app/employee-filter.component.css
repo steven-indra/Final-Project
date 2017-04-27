@@ -1,0 +1,6 @@
+#actions{
+    padding-left:25px!important;
+}
+/deep/ .mat-dialog-content{
+    padding-top:20px!important;
+}

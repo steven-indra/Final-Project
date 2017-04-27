@@ -39,3 +39,37 @@ section > #right {
   float:left;
   box-sizing: border-box;
 }
+/deep/ .mat-dialog-container{
+    text-align: center;
+    overflow:hidden;
+}
+/deep/ .mat-dialog-actions{
+    padding-left:40px!important;
+}
+/deep/ .mat-dialog-content{
+  overflow: hidden!important;
+}
+
+/deep/ .mat-tab-list
+{
+    height: 40px;
+}
+
+/deep/ .mat-tab-label
+{
+    min-width:16.6%!important;
+    height: 40px;
+    color: white;
+    padding-top:7px!important;
+}
+/deep/ .mat-tab-label-active{
+    color:darkred;
+}
+
+/deep/ .mat-ink-bar{
+    background-color: darkred;
+}
+#right-header{
+  height: 40px;
+  background-color: #5C6BC0;
+}

@@ -42,9 +42,6 @@ export class EmployeeService {
   addOrUpdate(newEmployee, image, empId) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    console.log(JSON.stringify(newEmployee));
-    console.log(JSON.stringify(image));
-    console.log(empId);
 
     return Observable.create(observer => {
       let formData: FormData = new FormData(),
@@ -73,10 +70,8 @@ export class EmployeeService {
       formData.append("division", newEmployee.division);
       formData.append("email", newEmployee.email);
       formData.append("location", newEmployee.location);
-      if (image != null) {
-        formData.append("file", image[0]);
-      } else {
-        formData.append("file", null);
+      if (image != undefined) {
+        formData.append("file", image);
       }
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {

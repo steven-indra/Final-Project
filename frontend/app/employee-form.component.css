@@ -1,0 +1,25 @@
+#form-content{
+    height: calc(100vh - 144.5px);
+    overflow: auto;
+}
+#form-footer{
+    height: 40px;
+    background-color: #5C6BC0;
+    padding: 5px;
+    box-sizing: border-box;
+}
+#submit{
+    color: white;
+    background-color: deeppink;
+}
+#submit, #cancel{
+    float: right;
+    height:100%;
+    border:none;
+    font-size: 14px;
+    width:80px;
+    margin-right: 5px;
+}
+#submit:hover, #cancel:hover{
+    cursor: pointer;
+}

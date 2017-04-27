@@ -45,7 +45,7 @@ public class EmployeeController {
 		Employee emp = new Employee();
 		if (empId != null) {
 			// Employee already exist => update data
-			emp.setEmpId(Long.parseLong(empId));
+			emp = employeeRepository.findOne(Long.parseLong(empId));
 		}
 		emp.setFirstName(firstName);
 		emp.setLastName(lastName);

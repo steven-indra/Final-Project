@@ -1,6 +1,5 @@
 :host {
   display: flex;
-  min-height: 90vh;
   flex-direction: column;
   box-sizing: border-box;
   width: 100%;
@@ -61,7 +60,7 @@ header {
 .list{
   position: relative;
   overflow: auto;
-  height: 600px;
+  height: calc(100vh - 104px);
 }
 header > h2 {
   font-size: 1.4em;

@@ -40,7 +40,6 @@ public class BackendApplication {
                 registry.addMapping("/employees/").allowedOrigins("http://localhost:3000");
                 registry.addMapping("/employees/{id}").allowedOrigins("http://localhost:3000");
                 registry.addMapping("/employees/contain").allowedOrigins("http://localhost:3000");
-                registry.addMapping("/employees/add").allowedOrigins("http://localhost:3000/employees/add");
                 registry.addMapping("/locations/").allowedOrigins("http://localhost:3000");
             }
         };
