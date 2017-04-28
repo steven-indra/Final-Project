@@ -1,6 +1,33 @@
-#form-content{
+.form-content{
     height: calc(100vh - 144.5px);
     overflow: auto;
+    padding: 10px 20px 0px 20px;
+    box-sizing: border-box;
+}
+#form-input{
+    width: 90%;
+    float: left;
+    padding-right: 5px;
+    box-sizing: border-box;
+}
+.error-message{
+    color:red;
+    font-size: 10pt;
+    width:100%;
+    bottom:0;
+    position:absolute;
+    left:0;
+}
+md-select{
+    margin-bottom: 2px;
+}
+#imagePlace{
+    width:10%;
+    float:left;
+}
+#myImage{
+    width: 100%;
+    height:auto;
 }
 #form-footer{
     height: 40px;
@@ -22,4 +49,17 @@
 }
 #submit:hover, #cancel:hover{
     cursor: pointer;
+}
+/deep/ .mat-input-placeholder-wrapper::after{
+    content: '\00a0'!important;
+}
+.example-full-width{
+    width: 100%;
+    box-sizing: border-box;
+}
+.container{
+    width: 100%;
+}
+/deep/ .mat-figure{
+    padding-right: 10px!important;
 }

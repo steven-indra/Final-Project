@@ -5,6 +5,7 @@ import { EmployeeService } from './employee.service';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { EmployeeFilterDialog } from './employee-filter.component';
 import { EmployeeMessageDialog } from './employee-messagebox.component';
+import { MdSnackBar } from '@angular/material';
 
 import { RefreshService } from './refresh.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -23,13 +24,15 @@ export class EmployeeListComponent {
   selectedEmployee = null;
   locationFilter = "";
   genderFilter = "";
+  filtered = false;
   private subscription: Subscription;
 
   constructor(private employeeService: EmployeeService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private refreshService: RefreshService,
-    public dialog: MdDialog) { }
+    public dialog: MdDialog,
+    public snackBar: MdSnackBar,) { }
 
   ngOnInit() {
     this.employeeService.getAll()
@@ -42,8 +45,7 @@ export class EmployeeListComponent {
       } else if (res.hasOwnProperty('option') && res.option === 'refreshSelected') {
         this.selectedEmployee = null;
         this.edited = false;
-      } else if (res.hasOwnProperty('option') && res.option === 'selectedEmployee')
-      {
+      } else if (res.hasOwnProperty('option') && res.option === 'selectedEmployee') {
         this.selectedEmployee = res.value;
         this.edited = true;
       }
@@ -79,6 +81,7 @@ export class EmployeeListComponent {
       if (result == "yes") {
         this.employeeService.delete(this.selectedEmployee)
           .subscribe(empId => {
+            this.openSnackBar(`Employe with id ${this.selectedEmployee.empId} has been deleted`);
             this.selectedEmployee = null;
             this.edited = false;
             this.router.navigate(['/employees/']);
@@ -109,12 +112,23 @@ export class EmployeeListComponent {
         if (result.action == "filter") {
           this.locationFilter = result.locValue;
           this.genderFilter = result.genderValue;
+          if (this.locationFilter != "" || this.genderFilter != "") {
+            this.filtered = true;
+          } else {
+            this.filtered = false;
+          }
           this.getEmployees(this.query, this.genderFilter, this.locationFilter, this.sort);
         }
       }
 
     });
 
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, '' , {
+      duration: 2000,
+    });
   }
 
   ngOnDestroy() {

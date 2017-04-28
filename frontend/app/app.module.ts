@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, XHRBackend } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdCardModule,MdDialogModule, MdSelectModule, MdToolbarModule, MdIconModule, MdChipsModule, MdInputModule, MdTabsModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdCardModule,MdDialogModule, MdSelectModule, MdToolbarModule, MdIconModule, MdChipsModule, MdInputModule, MdTabsModule,MdGridListModule, MdSnackBarModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee.component';
@@ -38,6 +38,8 @@ import { DatePipe } from '@angular/common';
     MdChipsModule,
     MdInputModule,
     MdTabsModule,
+    MdGridListModule,
+    MdSnackBarModule,
     routing
   ],
   declarations: [

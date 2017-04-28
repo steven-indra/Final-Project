@@ -15,11 +15,11 @@ public interface EmployeeRepository extends PagingAndSortingRepository<Employee,
 	@Query("select e from Employee e where (UPPER(e.lastName) like %:lastName% or UPPER(e.firstName) like %:firstName%) and UPPER(e.gender)=:gender")
 	public Iterable<Employee> findByGenderAndSort(@Param("firstName") String firstName, @Param("lastName") String lastName, @Param("gender") String gender, @Param(value = "asc") Sort sort);
 	
-	@Query("select e from Employee e where (UPPER(e.lastName) like %:lastName% or UPPER(e.firstName) like %:firstName%) and UPPER(e.location.locationCity)=:location")
-	public Iterable<Employee> findByLocationAndSort(@Param("firstName") String firstName, @Param("lastName") String lastName, @Param("location") String location, @Param(value = "asc") Sort sort);
+	@Query("select e from Employee e where (UPPER(e.lastName) like %:lastName% or UPPER(e.firstName) like %:firstName%) and e.location.locId=:location")
+	public Iterable<Employee> findByLocationAndSort(@Param("firstName") String firstName, @Param("lastName") String lastName, @Param("location") Long location, @Param(value = "asc") Sort sort);
 	
-	@Query("select e from Employee e where (UPPER(e.lastName) like %:lastName% or UPPER(e.firstName) like %:firstName%) and UPPER(e.gender)=:gender and UPPER(e.location.locationCity)=:location")
-	public Iterable<Employee> findByLocationGenderAndSort(@Param("firstName") String firstName, @Param("lastName") String lastName, @Param("gender") String gender, @Param("location") String location, @Param(value = "asc") Sort sort);
+	@Query("select e from Employee e where (UPPER(e.lastName) like %:lastName% or UPPER(e.firstName) like %:firstName%) and UPPER(e.gender)=:gender and e.location.locId=:location")
+	public Iterable<Employee> findByLocationGenderAndSort(@Param("firstName") String firstName, @Param("lastName") String lastName, @Param("gender") String gender, @Param("location") Long location, @Param(value = "asc") Sort sort);
 	
 	@Transactional
     public Long deleteByEmpId(long empId);

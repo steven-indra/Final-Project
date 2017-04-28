@@ -8,6 +8,7 @@ import { RefreshService } from './refresh.service';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { lookupListToken } from './providers';
+import { MdSnackBar } from '@angular/material';
 
 @Component({
   selector: 'ea-employee-form',
@@ -22,7 +23,7 @@ export class EmployeeFormComponent {
   employeeImage = "";
   edited = false;
   employeeId;
-
+  submitted = false;
   locations;
 
   constructor(
@@ -33,27 +34,28 @@ export class EmployeeFormComponent {
     private activatedRoute: ActivatedRoute,
     private datepipe: DatePipe,
     private locationService: LocationService,
+    public snackBar: MdSnackBar,
     @Inject(lookupListToken) public lookupLists) { }
 
   ngOnInit() {
     this.getLocations();
 
     this.form = this.formBuilder.group({
-      firstName: this.formBuilder.control(''),
-      lastName: this.formBuilder.control(''),
-      gender: this.formBuilder.control(''),
-      dob: this.formBuilder.control(''),
-      nationality: this.formBuilder.control(''),
-      maritalStatus: this.formBuilder.control(''),
-      phone: this.formBuilder.control(''),
-      subDivision: this.formBuilder.control(''),
-      status: this.formBuilder.control(''),
+      firstName: this.formBuilder.control('', Validators.required),
+      lastName: this.formBuilder.control('', Validators.required),
+      gender: this.formBuilder.control('', Validators.required),
+      dob: this.formBuilder.control('', Validators.required),
+      nationality: this.formBuilder.control('', Validators.required),
+      maritalStatus: this.formBuilder.control('', Validators.required),
+      phone: this.formBuilder.control('', Validators.required),
+      subDivision: this.formBuilder.control('', Validators.required),
+      status: this.formBuilder.control('', Validators.required),
       suspendDate: this.formBuilder.control(''),
-      hiredDate: this.formBuilder.control(''),
-      grade: this.formBuilder.control(''),
-      division: this.formBuilder.control(''),
-      email: this.formBuilder.control(''),
-      location: this.formBuilder.control(''),
+      hiredDate: this.formBuilder.control('', Validators.required),
+      grade: this.formBuilder.control('', Validators.required),
+      division: this.formBuilder.control('', Validators.required),
+      email: this.formBuilder.control('', [Validators.required, Validators.email]),
+      location: this.formBuilder.control('', Validators.required),
     });
 
     this.activatedRoute.params
@@ -114,7 +116,7 @@ export class EmployeeFormComponent {
       this.form.controls['grade'].setValue(this.employee.grade);
       this.form.controls['division'].setValue(this.employee.division);
       this.form.controls['email'].setValue(this.employee.email);
-      this.form.controls['location'].setValue(this.employee.location.locationCity);
+      this.form.controls['location'].setValue(this.employee.location.locId);
       if (this.employee.image == null) {
         this.employeeImage = "../default-user-image.png";
       } else {
@@ -139,7 +141,7 @@ export class EmployeeFormComponent {
   }
 
   onChange(event) {
-    this.file = event.srcElement.files[0];
+    this.file = event.target.files[0];
 
     //console.log(this.file[0]);
     var reader = new FileReader();
@@ -152,15 +154,39 @@ export class EmployeeFormComponent {
     //this.employeeImage = this.file[0].name;
   }
 
-  onSubmit(employee) {
-    //console.log(employee);
-    console.log(this.file);
-    this.employeeService.addOrUpdate(employee, this.file, this.employeeId)
-      .subscribe((response) => {
-        //console.log(response);
-        this.file =undefined;
-        this.refreshService.notifyOther({ option: 'refresh', value: 'from form' });
-        this.router.navigate(['/employees/']);
-      });
+  openSnackBar(message: string) {
+    this.snackBar.open(message, '' , {
+      duration: 2000,
+    });
+  }
+
+  onSubmit(employee, validation) {
+    this.submitted = true;
+    if (validation == true) {
+      console.log(this.file);
+      this.employeeService.addOrUpdate(employee, this.file, this.employeeId)
+        .subscribe((response) => {
+          //console.log(response);
+          if (this.employeeId != "add")
+          {
+            this.openSnackBar(`Employe with id ${this.employeeId}, ${employee.firstName} ${employee.lastName}'s data has been updated`);
+          }else
+          {
+            this.openSnackBar(`Employe ${employee.firstName} ${employee.lastName} has been created`);
+          }
+          
+          this.file = undefined;
+          this.refreshService.notifyOther({ option: 'refresh', value: 'from form' });
+          this.router.navigate(['/employees/']);
+        });
+    } else {
+      this.form.get('gender').markAsTouched();
+      this.form.get('status').markAsTouched();
+      this.form.get('grade').markAsTouched();
+      this.form.get('maritalStatus').markAsTouched();
+      this.form.get('division').markAsTouched();
+      this.form.get('location').markAsTouched();
+      return false;
+    }
   }
 }

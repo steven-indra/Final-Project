@@ -7,6 +7,9 @@
 header {
   color: #c6c5c3;
 }
+.filtered{
+  color:darkred!important;
+}
 .menu{
   float:right;
   height: 100%;

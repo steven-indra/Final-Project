@@ -10,7 +10,7 @@
       <md-chip-list class = "menu">
         <md-chip>{{ employees == null? 0:employees.length }}</md-chip>
       </md-chip-list>
-      <i class="material-icons menu" (click)="onFilter()">filter_list</i>
+      <i class="material-icons menu" (click)="onFilter()" [ngClass]="{'filtered':filtered}">filter_list</i>
       <i class="material-icons menu" (click)="onSort()">sort</i>
       <i class="material-icons menu" (click)="onDelete()" *ngIf="edited">delete</i>
     </div>

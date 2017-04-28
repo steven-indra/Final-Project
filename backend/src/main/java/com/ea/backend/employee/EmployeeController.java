@@ -20,7 +20,7 @@ import com.ea.backend.location.LocationRespository;
 @RestController
 public class EmployeeController {
 
-	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
@@ -67,7 +67,7 @@ public class EmployeeController {
 		emp.setGrade(grade);
 		emp.setDivision(division);
 		emp.setEmail(email);
-		Location empLoc = locationRespository.findByLocationCityIgnoreCase(location);
+		Location empLoc = locationRespository.findOne(Long.parseLong(location));
 		emp.setLocation(empLoc);
 		try {
 			if (file != null) {
@@ -93,14 +93,14 @@ public class EmployeeController {
 					new Sort(sorting));
 		} else if (gender.equals("") && !location.equals("")){
 			return employeeRepository.findByLocationAndSort(firstName.toUpperCase(), lastName.toUpperCase(),
-					location.toUpperCase(), new Sort(sorting));
+					Long.parseLong(location), new Sort(sorting));
 		}else if (!gender.equals("") && location.equals("")){
 			return employeeRepository.findByGenderAndSort(firstName.toUpperCase(), lastName.toUpperCase(),
 					gender.toUpperCase(), new Sort(sorting));
 		}else
 		{
 			return employeeRepository.findByLocationGenderAndSort(firstName.toUpperCase(), lastName.toUpperCase(),
-					gender.toUpperCase(), location.toUpperCase(), new Sort(sorting));
+					gender.toUpperCase(), Long.parseLong(location), new Sort(sorting));
 		}
 	}
 

@@ -1,100 +1,112 @@
-<div *ngIf="!show">
+<div *ngIf="!show" class="form-content">
   Select Employee First
 </div>
 <div *ngIf="show">
-  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
-    <section id="form-content">
-      <ul>
-        <li>
-          <label for="firstName">firstName</label>
-          <input type="text" name="firstName" id="firstName" formControlName="firstName">
-        </li>
-        <li>
-          <label for="lastName">lastName</label>
-          <input type="text" name="lastName" id="lastName" formControlName="lastName">
-        </li>
-        <li>
-          <label for="gender">gender</label>
-          <md-select placeholder="Gender" name="gender" id="gender" formControlName="gender">
-            <md-option *ngFor="let gender of lookupLists.genders" [value]="gender.value">
-              {{gender.viewValue}}
-            </md-option>
-          </md-select>
-        </li>
-        <li>
-          <label for="dob">dob</label>
-          <input type="date" name="dob" id="dob" formControlName="dob">
-        </li>
-        <li>
-          <label for="nationality">nationality</label>
-          <input type="text" name="nationality" id="nationality" formControlName="nationality">
-        </li>
-        <li>
-          <label for="maritalStatus">maritalStatus</label>
-          <md-select placeholder="Marital Status" name="maritalStatus" id="maritalStatus" formControlName="maritalStatus">
-            <md-option *ngFor="let maritalStatus of lookupLists.maritalsStatus" [value]="maritalStatus.value">
-              {{maritalStatus.viewValue}}
-            </md-option>
-          </md-select>
-        </li>
-        <li>
-          <label for="phone">phone</label>
-          <input type="text" name="phone" id="phone" formControlName="phone">
-        </li>
-        <li>
-          <label for="subDivision">subDivision</label>
-          <input type="text" name="subDivision" id="subDivision" formControlName="subDivision">
-        </li>
-        <li>
-          <label for="status">status</label>
-          <md-select placeholder="Status" name="status" id="status" formControlName="status">
-            <md-option *ngFor="let status of lookupLists.status" [value]="status.value">
-              {{status.viewValue}}
-            </md-option>
-          </md-select>
-        </li>
-        <li>
-          <label for="suspendDate">suspendDate</label>
-          <input type="date" name="suspendDate" id="suspendDate" formControlName="suspendDate">
-        </li>
-        <li>
-          <label for="hiredDate">hiredDate</label>
-          <input type="date" name="hiredDate" id="hiredDate" formControlName="hiredDate">
-        </li>
-        <li>
-          <label for="grade">grade</label>
-          <md-select placeholder="Grades" name="grade" id="grade" formControlName="grade">
-            <md-option *ngFor="let grade of lookupLists.grades" [value]="grade.value">
-              {{grade.viewValue}}
-            </md-option>
-          </md-select>
-        </li>
-        <li>
-          <label for="division">division</label>
-          <md-select placeholder="Division" name="division" id="division" formControlName="division">
-            <md-option *ngFor="let division of lookupLists.divisions" [value]="division.value">
-              {{division.viewValue}}
-            </md-option>
-          </md-select>
-        </li>
-        <li>
-          <label for="email">email</label>
-          <input type="text" name="email" id="email" formControlName="email">
-        </li>
-        <li>
-          <label for="location">location</label>
-          <md-select placeholder="Location" formControlName="location">
-            <md-option *ngFor="let location of locations" [value]="location.locationCity">
-              {{location.locationCity}}
-            </md-option>
-          </md-select>
-        </li>
-      </ul>
-      <img md-card-avatar [src]="employeeImage | safeUrl" (click)="fileInput.click()" />
-      <input #fileInput type="file" hidden="hidden" (change)="onChange($event)" />
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value, form.valid)">
+    <section class="form-content">
+      <div id="form-input">
+        <md-grid-list cols="2" rowHeight="80px">
+          <md-grid-tile class="container">
+            <md-input-container class="example-full-width">
+              <input mdInput name="firstName" id="firstName" placeholder="First Name" formControlName="firstName">
+            </md-input-container>
+            <div class="error-message" *ngIf="form.controls.firstName.errors?.required&&(form.controls.firstName.touched||submitted)">
+              <p>This field is required</p>
+            </div>
+          </md-grid-tile>
+          <md-grid-tile class="container">
+            <md-input-container class="example-full-width">
+              <input mdInput name="subDivision" id="subDivision" placeholder="Sub Division" formControlName="subDivision">
+            </md-input-container>
+          </md-grid-tile>
+          <md-grid-tile class="container">
+            <md-input-container class="example-full-width">
+              <input mdInput name="lastName" id="lastName" placeholder="Last Name" formControlName="lastName">
+            </md-input-container>
+          </md-grid-tile>
+          <md-grid-tile class="container">
+            <md-select placeholder="Status" name="status" id="status" formControlName="status" class="example-full-width">
+              <md-option *ngFor="let status of lookupLists.status" [value]="status.value">
+                {{status.viewValue}}
+              </md-option>
+            </md-select>
+          </md-grid-tile>
+          <md-grid-tile class="container">
+            <md-select placeholder="Gender" name="gender" id="gender" formControlName="gender" class="example-full-width">
+              <md-option *ngFor="let gender of lookupLists.genders" [value]="gender.value">
+                {{gender.viewValue}}
+              </md-option>
+            </md-select>
+          </md-grid-tile>
+          <md-grid-tile class="container">
+            <md-input-container class="example-full-width">
+              <input mdInput type="date" name="suspendDate" id="suspendDate" placeholder="Suspend Date" formControlName="suspendDate">
+            </md-input-container>
+          </md-grid-tile>
+          <md-grid-tile class="container">
+            <md-input-container class="example-full-width">
+              <input mdInput type="date" name="dob" id="dob" placeholder="Date Of Birth" formControlName="dob">
+              <md-hint></md-hint>
+            </md-input-container>
+          </md-grid-tile>
+          <md-grid-tile class="container">
+            <md-input-container class="example-full-width">
+              <input mdInput type="date" name="hiredDate" id="hiredDate" placeholder="Hired Date" formControlName="hiredDate">
+            </md-input-container>
+          </md-grid-tile>
+          <md-grid-tile class="container">
+            <md-input-container class="example-full-width">
+              <input mdInput name="nationality" id="nationality" placeholder="Nationality" formControlName="nationality">
+            </md-input-container>
+          </md-grid-tile>
+          <md-grid-tile class="container">
+            <md-select placeholder="Grades" name="grade" id="grade" formControlName="grade" class="example-full-width">
+              <md-option *ngFor="let grade of lookupLists.grades" [value]="grade.value">
+                {{grade.viewValue}}
+              </md-option>
+            </md-select>
+          </md-grid-tile>
+          <md-grid-tile class="container">
+            <md-select placeholder="Marital Status" name="maritalStatus" id="maritalStatus" formControlName="maritalStatus" class="example-full-width">
+              <md-option *ngFor="let maritalStatus of lookupLists.maritalsStatus" [value]="maritalStatus.value">
+                {{maritalStatus.viewValue}}
+              </md-option>
+            </md-select>
+          </md-grid-tile>
+          <md-grid-tile class="container">
+            <md-select placeholder="Division" name="division" id="division" formControlName="division" class="example-full-width">
+              <md-option *ngFor="let division of lookupLists.divisions" [value]="division.value">
+                {{division.viewValue}}
+              </md-option>
+            </md-select>
+          </md-grid-tile>
+          <md-grid-tile class="container">
+            <md-input-container class="example-full-width">
+              <input mdInput name="phone" id="phone" placeholder="Phone" formControlName="phone">
+            </md-input-container>
+          </md-grid-tile>
+          <md-grid-tile class="container">
+            <md-input-container class="example-full-width">
+              <input mdInput type="email" name="email" id="email" placeholder="Email" formControlName="email">
+            </md-input-container>
+          </md-grid-tile>
+          <md-grid-tile class="container">
+            <md-select placeholder="Location" formControlName="location" class="example-full-width">
+              <md-option *ngFor="let location of locations" [value]="location.locId">
+                {{location.locationCity}}
+              </md-option>
+            </md-select>
+          </md-grid-tile>
+        </md-grid-list>
+      </div>
+      <div id="imagePlace">
+        <img md-card-avatar [src]="employeeImage | safeUrl" (click)="fileInput.click()" id="myImage" />
+        <input #fileInput type="file" hidden="hidden" (change)="onChange($event)" />
+      </div>
+
     </section>
     <section id="form-footer">
-      <button type="submit" id="submit" [disabled]="!form.valid">SAVE</button>
+      <button type="submit" id="submit">SAVE</button>
       <button type="button" id="cancel" (click)="onCancel()">CANCEL</button>
     </section>
   </form>
