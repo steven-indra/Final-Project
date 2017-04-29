@@ -39,7 +39,7 @@ export class EmployeeFormComponent {
 
   ngOnInit() {
     this.getLocations();
-
+    
     this.form = this.formBuilder.group({
       firstName: this.formBuilder.control('', Validators.required),
       lastName: this.formBuilder.control('', Validators.required),
@@ -68,6 +68,7 @@ export class EmployeeFormComponent {
           this.employeeImage = "../default-user-image.png";
           this.file = null;
           this.form.reset();
+          this.submitted = false;
         } else if (this.employeeId != null && this.employeeId != "") {
           this.getEmployee(this.employeeId);
         }

@@ -7,6 +7,16 @@
 header {
   color: #c6c5c3;
 }
+.tablecell{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.error{
+  height: calc(100vh - 104px);
+  width: 100%;
+  display: table;
+}
 .filtered{
   color:darkred!important;
 }

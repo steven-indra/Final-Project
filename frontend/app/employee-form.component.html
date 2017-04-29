@@ -1,5 +1,7 @@
-<div *ngIf="!show" class="form-content">
-  Select Employee First
+<div *ngIf="!show" class="error">
+  <div class="tablecell">
+      Select Employee First
+  </div>
 </div>
 <div *ngIf="show">
   <form [formGroup]="form" (ngSubmit)="onSubmit(form.value, form.valid)">
@@ -18,11 +20,17 @@
             <md-input-container class="example-full-width">
               <input mdInput name="subDivision" id="subDivision" placeholder="Sub Division" formControlName="subDivision">
             </md-input-container>
+            <div class="error-message" *ngIf="form.controls.subDivision.errors?.required&&(form.controls.subDivision.touched||submitted)">
+              <p>This field is required</p>
+            </div>
           </md-grid-tile>
           <md-grid-tile class="container">
             <md-input-container class="example-full-width">
               <input mdInput name="lastName" id="lastName" placeholder="Last Name" formControlName="lastName">
             </md-input-container>
+            <div class="error-message" *ngIf="form.controls.lastName.errors?.required&&(form.controls.lastName.touched||submitted)">
+              <p>This field is required</p>
+            </div>
           </md-grid-tile>
           <md-grid-tile class="container">
             <md-select placeholder="Status" name="status" id="status" formControlName="status" class="example-full-width">
@@ -30,6 +38,9 @@
                 {{status.viewValue}}
               </md-option>
             </md-select>
+            <div class="error-message" *ngIf="form.controls.status.errors?.required&&(form.controls.status.touched||submitted)">
+              <p>This field is required</p>
+            </div>
           </md-grid-tile>
           <md-grid-tile class="container">
             <md-select placeholder="Gender" name="gender" id="gender" formControlName="gender" class="example-full-width">
@@ -37,27 +48,42 @@
                 {{gender.viewValue}}
               </md-option>
             </md-select>
+            <div class="error-message" *ngIf="form.controls.gender.errors?.required&&(form.controls.gender.touched||submitted)">
+              <p>This field is required</p>
+            </div>
           </md-grid-tile>
           <md-grid-tile class="container">
             <md-input-container class="example-full-width">
               <input mdInput type="date" name="suspendDate" id="suspendDate" placeholder="Suspend Date" formControlName="suspendDate">
             </md-input-container>
+            <div class="error-message" *ngIf="form.controls.suspendDate.errors?.required&&(form.controls.suspendDate.touched||submitted)">
+              <p>This field is required</p>
+            </div>
           </md-grid-tile>
           <md-grid-tile class="container">
             <md-input-container class="example-full-width">
               <input mdInput type="date" name="dob" id="dob" placeholder="Date Of Birth" formControlName="dob">
               <md-hint></md-hint>
             </md-input-container>
+            <div class="error-message" *ngIf="form.controls.dob.errors?.required&&(form.controls.dob.touched||submitted)">
+              <p>This field is required</p>
+            </div>
           </md-grid-tile>
           <md-grid-tile class="container">
             <md-input-container class="example-full-width">
               <input mdInput type="date" name="hiredDate" id="hiredDate" placeholder="Hired Date" formControlName="hiredDate">
             </md-input-container>
+            <div class="error-message" *ngIf="form.controls.hiredDate.errors?.required&&(form.controls.hiredDate.touched||submitted)">
+              <p>This field is required</p>
+            </div>
           </md-grid-tile>
           <md-grid-tile class="container">
             <md-input-container class="example-full-width">
               <input mdInput name="nationality" id="nationality" placeholder="Nationality" formControlName="nationality">
             </md-input-container>
+            <div class="error-message" *ngIf="form.controls.nationality.errors?.required&&(form.controls.nationality.touched||submitted)">
+              <p>This field is required</p>
+            </div>
           </md-grid-tile>
           <md-grid-tile class="container">
             <md-select placeholder="Grades" name="grade" id="grade" formControlName="grade" class="example-full-width">
@@ -65,6 +91,9 @@
                 {{grade.viewValue}}
               </md-option>
             </md-select>
+            <div class="error-message" *ngIf="form.controls.grade.errors?.required&&(form.controls.grade.touched||submitted)">
+              <p>This field is required</p>
+            </div>
           </md-grid-tile>
           <md-grid-tile class="container">
             <md-select placeholder="Marital Status" name="maritalStatus" id="maritalStatus" formControlName="maritalStatus" class="example-full-width">
@@ -72,6 +101,9 @@
                 {{maritalStatus.viewValue}}
               </md-option>
             </md-select>
+            <div class="error-message" *ngIf="form.controls.maritalStatus.errors?.required&&(form.controls.maritalStatus.touched||submitted)">
+              <p>This field is required</p>
+            </div>
           </md-grid-tile>
           <md-grid-tile class="container">
             <md-select placeholder="Division" name="division" id="division" formControlName="division" class="example-full-width">
@@ -79,23 +111,38 @@
                 {{division.viewValue}}
               </md-option>
             </md-select>
+            <div class="error-message" *ngIf="form.controls.division.errors?.required&&(form.controls.division.touched||submitted)">
+              <p>This field is required</p>
+            </div>
           </md-grid-tile>
           <md-grid-tile class="container">
             <md-input-container class="example-full-width">
               <input mdInput name="phone" id="phone" placeholder="Phone" formControlName="phone">
             </md-input-container>
+            <div class="error-message" *ngIf="form.controls.phone.errors?.required&&(form.controls.phone.touched||submitted)">
+              <p>This field is required</p>
+            </div>
           </md-grid-tile>
           <md-grid-tile class="container">
             <md-input-container class="example-full-width">
               <input mdInput type="email" name="email" id="email" placeholder="Email" formControlName="email">
             </md-input-container>
+            <div class="error-message" *ngIf="form.controls.email.errors?.required&&(form.controls.email.touched||submitted)">
+              <p>This field is required</p>
+            </div>
+            <div class="error-message" *ngIf="form.controls.email.errors?.email&&(form.controls.email.touched||submitted)">
+              <p>Invalid email</p>
+            </div>
           </md-grid-tile>
           <md-grid-tile class="container">
-            <md-select placeholder="Location" formControlName="location" class="example-full-width">
+            <md-select placeholder="Location" name="location" formControlName="location" class="example-full-width">
               <md-option *ngFor="let location of locations" [value]="location.locId">
                 {{location.locationCity}}
               </md-option>
             </md-select>
+            <div class="error-message" *ngIf="form.controls.location.errors?.required&&(form.controls.location.touched||submitted)">
+              <p>This field is required</p>
+            </div>
           </md-grid-tile>
         </md-grid-list>
       </div>

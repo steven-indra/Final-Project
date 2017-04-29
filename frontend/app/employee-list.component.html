@@ -21,7 +21,10 @@
     <ea-employee *ngFor="let eachEmployee of employees" [employee]="eachEmployee" (click)=onClick(eachEmployee) [selectedEmployee]="selectedEmployee"></ea-employee>
   </div>
 
-  <div *ngIf="show">
-    We couldn't find what you're looking for
+  <div *ngIf="show" class="error">
+    <div class="tablecell">
+        We couldn't find what you're looking for
+    </div>
+    
   </div>
 </section>
