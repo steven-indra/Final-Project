@@ -130,7 +130,7 @@
             <div class="error-message" *ngIf="form.controls.email.errors?.required&&(form.controls.email.touched||submitted)">
               <p>This field is required</p>
             </div>
-            <div class="error-message" *ngIf="form.controls.email.errors?.email&&(form.controls.email.touched||submitted)">
+            <div class="error-message" *ngIf="form.controls.email.errors?.email&&(form.controls.email.touched||submitted) && !form.controls.email.errors?.required">
               <p>Invalid email</p>
             </div>
           </md-grid-tile>
