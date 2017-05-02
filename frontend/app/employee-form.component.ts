@@ -136,6 +136,7 @@ export class EmployeeFormComponent {
           this.show = true;
           this.edited = true;
           this.onValue();
+          this.file = null;
           this.refreshService.notifyOther({ option: 'selectedEmployee', value: this.employee });
         }
       });
